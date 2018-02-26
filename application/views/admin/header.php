@@ -193,22 +193,7 @@
             
           </ul>
         </li>
-        <li class="header">Role Manager</li>
-        <li <?php echo in_array(uri_string(),array('auth/groups','auth/create_group')) ? 'class="active"' : ''?>>
-          <a href="<?php echo site_url('auth/groups')?>">
-            <i class="fa fa-group"></i> <span>Groups</span>
-          </a>
-        </li>
-        <li <?php echo in_array(uri_string(),array('auth','auth/create_user','auth/index')) ? 'class="active"' : ''?>>
-          <a href="<?php echo site_url('auth/')?>">
-            <i class="fa fa-user"></i> <span>Users</span>
-          </a>
-        </li>
-        <li>
-          <a href="<?php echo site_url('auth/logout')?>">
-            <i class="fa fa-lock"></i> <span>Logout</span>
-          </a>
-        </li>
+        
       </ul>
     </section>
     <!-- /.sidebar -->
