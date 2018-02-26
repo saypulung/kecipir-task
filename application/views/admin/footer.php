@@ -37,18 +37,14 @@
 <script src="<?php echo base_url()?>public/admin/plugins/iCheck/icheck.min.js"></script>
 <script src="<?php echo base_url()?>public/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url()?>public/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="<?php echo base_url()?>public/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="<?php echo base_url()?>public/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="<?php echo base_url()?>public/admin/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
 <script src="<?php echo base_url()?>public/admin/bower_components/moment/min/moment.min.js"></script>
 <script src="<?php echo base_url()?>public/admin/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script src="<?php echo base_url()?>public/admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="<?php echo base_url()?>public/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script src="<?php echo base_url()?>public/admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="<?php echo base_url()?>public/admin/bower_components/fastclick/lib/fastclick.js"></script>
 <script src="<?php echo base_url()?>public/admin/dist/js/adminlte.min.js"></script>
-<script src="<?php echo base_url()?>public/admin/dist/js/pages/dashboard.js"></script>
-<script src="<?php echo base_url()?>public/admin/dist/js/demo.js"></script>
+
+
 <script type="text/javascript">
   $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
       checkboxClass: 'icheckbox_minimal-blue',
@@ -58,7 +54,14 @@
 
 <?php
 if(isset($generated_js)){
-  echo "<script type=''>$generated_js</script>";
+  if(is_array($generated_js)){
+    foreach($generated_js as $gj){
+      echo "<script type=''>$gj</script>";
+    }
+  }else{
+    echo "<script type=''>$generated_js</script>";
+  }
+  
 }?>
 </body>
 </html>

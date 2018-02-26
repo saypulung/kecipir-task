@@ -46,7 +46,7 @@
     * If you establish multiple databases in config/database.php this will allow you to
     * set the database (other than $active_group) - more info: http://ellislab.com/forums/viewthread/145901/#712942
     */
-    public function generate_script_js($script_id="my_table",$columns = "",$url){
+    public function generate_script_js($script_id="my_table",$columns = "",$url,$index=1){
       $template = '$(document).ready(function() {
                 $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
                 {
@@ -60,8 +60,10 @@
                         "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
                     };
                 };
+                ';
 
-                var t = $("#'.$script_id.'").dataTable({
+      $template.='
+                var t'.$index.' = $("#'.$script_id.'").dataTable({
                     initComplete: function() {
                         var api = this.api();
                         $("#'.$script_id.'_filter input")

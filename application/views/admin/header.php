@@ -179,6 +179,20 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-group"></i>
+            <span>Karyawan</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display: none;">
+            <li><a href="<?php echo site_url('admin/karyawan')?>"><i class="fa fa-circle-o"></i> Data Karyawan</a></li>
+            <li><a href="<?php echo site_url('admin/karyawan/karyawan_create')?>"><i class="fa fa-circle-o"></i> Tambah Data</a></li>
+            
+          </ul>
+        </li>
         <li class="header">Role Manager</li>
         <li <?php echo in_array(uri_string(),array('auth/groups','auth/create_group')) ? 'class="active"' : ''?>>
           <a href="<?php echo site_url('auth/groups')?>">
