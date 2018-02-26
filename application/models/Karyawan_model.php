@@ -24,6 +24,10 @@ class Karyawan_model extends CI_Model {
         $this->db->where('id',$id);
         return $this->db->update('master_playground',['is_deleted'=>0]);
     }
+    function delete_permanent_karyawan($id){
+        $this->db->where('id',$id);
+        return $this->db->delete('master_playground');
+    }
     function delete_karyawan($id){
         $this->db->where('id',$id);
         return $this->db->update('master_playground',['is_deleted'=>1]);

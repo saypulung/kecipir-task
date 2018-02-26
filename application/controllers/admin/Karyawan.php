@@ -112,9 +112,15 @@ class Karyawan extends CI_Controller{
 		$this->load->view('admin/layout',$data);
 	}
 	public function karyawan_delete($id){
-
+		$this->Karyawan_model->delete_karyawan($id);
+		redirect('admin/karyawan');
+	}
+	public function karyawan_undelete($id){
+		$this->Karyawan_model->undelete_karyawan($id);
+		redirect('admin/karyawan');	
 	}
 	public function karyawan_delete_permanently($id){
-
+		$this->Karyawan_model->delete_permanent_karyawan($id);
+		redirect('admin/karyawan');	
 	}
 }
