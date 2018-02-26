@@ -31,6 +31,10 @@ class Karyawan_model extends CI_Model {
     function create_karyawan($data){
         return $this->db->insert('master_playground',$data);
     }
+    function detail_karyawan($id){
+        $this->db->where('id',$id);
+        return $this->db->get('master_playground');
+    }
     function update_karyawan($data,$id){
         $this->db->where('id',$id);
         return $this->db->update('master_playground',$data);

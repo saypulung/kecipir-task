@@ -3,6 +3,7 @@ class Karyawan extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('datatables');
+		$this->load->model('Karyawan_model');
 	}
 	public function index(){
 		$data['script_id'] = 'karyawan_dt';
@@ -37,28 +38,83 @@ class Karyawan extends CI_Controller{
 	
 	public function karyawan_json_datatables(){
 		
-        $this->load->model('Karyawan_model');
         header('Content-Type: application/json');
         echo $this->Karyawan_model->json();
 	}
 	public function karyawan_deleted_json_datatables(){
 		
-        $this->load->model('Karyawan_model');
+        
         header('Content-Type: application/json');
         echo $this->Karyawan_model->deleted_json();
 	}
 	public function karyawan_create(){
-		$data['content']='karyawan/create';
+		
+		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			$this->load->library('form_validation');
+			$this->form_validation->set_error_delimiters('<p>','</p>');
+            $this->form_validation->set_rules('nama', 'Nama', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('telp', 'Nomor Telepon', 'required');
+            $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+            if ($this->form_validation->run() == FALSE)
+            {
+            	$data['message']=$this->form_validation->error_string();
+				$data['content']='karyawan/create';
+            }
+            else
+            {
+            	$data_karyawan['nama']=$this->input->post('nama',TRUE);
+            	$data_karyawan['alamat']=$this->input->post('alamat',TRUE);
+            	$data_karyawan['telp']=$this->input->post('telp',TRUE);
+            	$data_karyawan['tanggal_lahir']=$this->input->post('tanggal_lahir',TRUE);
+            	$this->Karyawan_model->create_karyawan($data_karyawan);
+                redirect('admin/karyawan');
+            }
+			
+		}else{
+			
+			$data['message']='';
+			$data['content']='karyawan/create';	
+		}
+		
 		$this->load->view('admin/layout',$data);
 	}
-	public function karyawan_update(){
-		$data['content']='karyawan/update';
+	public function karyawan_update($id){
+		
+		$data['edit']=$this->Karyawan_model->detail_karyawan($id)->row_array();
+		if($this->input->server('REQUEST_METHOD') == 'POST'){
+			$this->load->library('form_validation');
+			$this->form_validation->set_error_delimiters('<p>','</p>');
+            $this->form_validation->set_rules('nama', 'Nama', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('telp', 'Nomor Telepon', 'required');
+            $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
+            if ($this->form_validation->run() == FALSE)
+            {
+            	$data['message']=$this->form_validation->error_string();
+				$data['content']='karyawan/update';
+            }
+            else
+            {
+            	$data_karyawan['nama']=$this->input->post('nama',TRUE);
+            	$data_karyawan['alamat']=$this->input->post('alamat',TRUE);
+            	$data_karyawan['telp']=$this->input->post('telp',TRUE);
+            	$data_karyawan['tanggal_lahir']=$this->input->post('tanggal_lahir',TRUE);
+            	$this->Karyawan_model->update_karyawan($data_karyawan,$id);
+                redirect('admin/karyawan');
+            }
+			
+		}else{
+			$data['message']='';
+			$data['content']='karyawan/update';	
+		}
+		
 		$this->load->view('admin/layout',$data);
 	}
-	public function karyawan_delete(){
+	public function karyawan_delete($id){
 
 	}
-	public function karyawan_delete_permanently(){
+	public function karyawan_delete_permanently($id){
 
 	}
 }
