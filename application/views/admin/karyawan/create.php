@@ -19,11 +19,26 @@
               </div>
               <div class="form-group">
                 <label for="inputEmail6" class="control-label">No Telp</label>
-                <input type="text" name="telp" class="form-control" id="inputEmail6" placeholder="No Telp">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-phone"></i>
+                  </div>
+                  <input type="text" name="telp" class="form-control" id="inputEmail6" placeholder="No Telp">
+                  
+                </div>
+                
               </div>
               <div class="form-group">
                 <label for="inputEmail7" class="control-label">Tanggal Lahir</label>
-                <input type="text" name="tanggal_lahir" class="form-control" id="inputEmail7" placeholder="Tanggal Lahir">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" name="tanggal_lahir" class="form-control datepicker" id="inputEmail7" placeholder="Tanggal Lahir">
+                  
+                  
+                </div>
+                
               </div>
               
             </div>

@@ -67,6 +67,7 @@ class Karyawan extends CI_Controller{
             	$data_karyawan['alamat']=$this->input->post('alamat',TRUE);
             	$data_karyawan['telp']=$this->input->post('telp',TRUE);
             	$data_karyawan['tanggal_lahir']=$this->input->post('tanggal_lahir',TRUE);
+            	$data_karyawan['created_at']=date('Y-m-d H:i:s');
             	$this->Karyawan_model->create_karyawan($data_karyawan);
                 redirect('admin/karyawan');
             }
@@ -80,7 +81,6 @@ class Karyawan extends CI_Controller{
 		$this->load->view('admin/layout',$data);
 	}
 	public function karyawan_update($id){
-		
 		$data['edit']=$this->Karyawan_model->detail_karyawan($id)->row_array();
 		if($this->input->server('REQUEST_METHOD') == 'POST'){
 			$this->load->library('form_validation');
@@ -100,6 +100,7 @@ class Karyawan extends CI_Controller{
             	$data_karyawan['alamat']=$this->input->post('alamat',TRUE);
             	$data_karyawan['telp']=$this->input->post('telp',TRUE);
             	$data_karyawan['tanggal_lahir']=$this->input->post('tanggal_lahir',TRUE);
+            	$data_karyawan['updated_at']=date('Y-m-d H:i:s');
             	$this->Karyawan_model->update_karyawan($data_karyawan,$id);
                 redirect('admin/karyawan');
             }

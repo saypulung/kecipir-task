@@ -23,7 +23,7 @@
               </div>
               <div class="form-group">
                 <label for="inputEmail7" class="control-label">Tanggal Lahir</label>
-                <input type="text" name="tanggal_lahir" value="<?php echo $edit['tanggal_lahir']?>"  class="form-control" id="inputEmail7" placeholder="Tanggal Lahir">
+                <input type="text" name="tanggal_lahir" value="<?php echo $edit['tanggal_lahir']?>"  class="form-control datepicker" id="inputEmail7" placeholder="Tanggal Lahir">
               </div>
               
             </div>
