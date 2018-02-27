@@ -27,13 +27,13 @@ class Welcome extends CI_Controller {
 		echo $r;
 	}
 	public function compare(){
-		$r = $this->bcrypt->verify('asu','$2y$08$AwctnDUkN0WJ/0g1Jma35.QhoAPUum9PwVB3Nf0JleMl7nc.MNBIu');
+		$r = $this->bcrypt->verify('xxx','$2y$08$AwctnDUkN0WJ/0g1Jma35.QhoAPUum9PwVB3Nf0JleMl7nc.MNBIu');
 		echo $r;
 	}
-	public function test_bc(){
-		$this->load->library('breadcrumbs');
-		$this->breadcrumbs->push("Dashboard",site_url('dashboard/index'),FALSE,array('title'=>"Klik disini",'alt'=>'fucking'));
-		$this->breadcrumbs->push("<i class='fa fa-star'></i> Bintang",site_url('dashboard/index'),TRUE);
-		echo $this->breadcrumbs->build();
-	}
+	
+		
+		
+		
+		
+	
 }
